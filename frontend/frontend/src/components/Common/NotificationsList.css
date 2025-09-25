@@ -1,0 +1,81 @@
+.notifications-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.notification-item {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.notification-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.notification-item.unread {
+  border-left: 4px solid #3b82f6;
+  background-color: #eff6ff;
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.notification-message {
+  font-size: 1rem;
+  color: #374151;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.notification-time {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.unread-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 8px;
+  height: 8px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .notification-item {
+    padding: 1rem;
+  }
+  
+  .notification-message {
+    font-size: 0.875rem;
+  }
+}
