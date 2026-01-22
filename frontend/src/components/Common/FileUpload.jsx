@@ -31,8 +31,7 @@ const FileUpload = ({
             }
           });
           return errorMessages.join(', ');
-        });
-        
+        });      
         // Show error toast or alert
         alert('Upload errors:\n' + errors.join('\n'));
       }
@@ -49,12 +48,10 @@ const FileUpload = ({
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
+    onDrop, maxSize, multiple,
     accept: {
       'application/pdf': ['.pdf'],
     },
-    maxSize,
-    multiple,
   });
 
   const removeFile = (index) => {
@@ -84,7 +81,6 @@ const FileUpload = ({
         `}
       >
         <input {...getInputProps()} />
-        
         <div className="flex flex-col items-center">
           <CloudArrowUpIcon className={`w-12 h-12 mb-4 ${
             isDragActive ? 'text-primary-600' : 'text-gray-400'

@@ -14,23 +14,10 @@ import EmptyState from './EmptyState';
  * @param {Object} props - Component props
  */
 const DataTable = ({
-  data = [],
-  columns = [],
-  loading = false,
-  error = null,
-  searchable = false,
-  sortable = false,
-  paginated = false,
-  pageSize = 10,
-  emptyMessage = 'No data available',
-  emptyIcon = 'bi-inbox',
-  className = '',
-  onRowClick,
-  selectedRows = [],
-  onRowSelect,
-  bulkActions = [],
-  onBulkAction,
-  ...props
+  data = [], columns = [], loading = false, error = null, searchable = false,
+  sortable = false, paginated = false, pageSize = 10, emptyMessage = 'No data available',
+  emptyIcon = 'bi-inbox', className = '', onRowClick, selectedRows = [], onRowSelect,
+  bulkActions = [], onBulkAction, ...props
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortColumn, setSortColumn] = useState(null);
@@ -40,7 +27,6 @@ const DataTable = ({
   // Filter data based on search term
   const filteredData = useMemo(() => {
     if (!searchable || !searchTerm) return data;
-
     return data.filter(row =>
       columns.some(column => {
         const value = row[column.key];
@@ -52,7 +38,6 @@ const DataTable = ({
   // Sort data
   const sortedData = useMemo(() => {
     if (!sortable || !sortColumn) return filteredData;
-
     return [...filteredData].sort((a, b) => {
       const aValue = a[sortColumn];
       const bValue = b[sortColumn];
@@ -67,16 +52,13 @@ const DataTable = ({
   // Paginate data
   const paginatedData = useMemo(() => {
     if (!paginated) return sortedData;
-
     const startIndex = (currentPage - 1) * pageSize;
     return sortedData.slice(startIndex, startIndex + pageSize);
   }, [sortedData, currentPage, pageSize, paginated]);
 
   const totalPages = Math.ceil(sortedData.length / pageSize);
-
   const handleSort = (column) => {
     if (!sortable || !column.sortable) return;
-
     if (sortColumn === column.key) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
@@ -91,7 +73,6 @@ const DataTable = ({
 
   const handleSelectAll = (checked) => {
     if (!onRowSelect) return;
-
     if (checked) {
       const allIds = paginatedData.map(row => row.id);
       onRowSelect([...new Set([...selectedRows, ...allIds])]);
@@ -103,15 +84,13 @@ const DataTable = ({
 
   const isAllSelected = paginatedData.length > 0 && 
     paginatedData.every(row => selectedRows.includes(row.id));
-  const isIndeterminate = paginatedData.some(row => selectedRows.includes(row.id)) && !isAllSelected;
 
+  const isIndeterminate = paginatedData.some(row => selectedRows.includes(row.id)) && !isAllSelected;
   const renderSortIcon = (column) => {
     if (!sortable || !column.sortable) return null;
-
     if (sortColumn !== column.key) {
       return <ChevronUpIcon className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100" />;
     }
-
     return sortDirection === 'asc'
       ? <ChevronUpIcon className="w-4 h-4 text-gray-600" />
       : <ChevronDownIcon className="w-4 h-4 text-gray-600" />;

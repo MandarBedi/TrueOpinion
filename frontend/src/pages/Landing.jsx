@@ -4,50 +4,28 @@ import Header from '../components/Layout/Header';
 import Footer from '../components/Layout/Footer';
 import CookieConsent from '../components/Common/CookieConsent';
 import { 
-  ShieldCheckIcon, 
-  UserGroupIcon, 
-  BoltIcon,
-  LockClosedIcon,
-  CreditCardIcon,
-  DocumentCheckIcon,
-  StarIcon,
-  CheckCircleIcon,
-  HeartIcon,
-  ClockIcon,
-  ChatBubbleLeftRightIcon,
-  ArrowRightIcon
+  ShieldCheckIcon, UserGroupIcon, BoltIcon, LockClosedIcon,
+  CreditCardIcon, DocumentCheckIcon, StarIcon,
+  HeartIcon, ClockIcon, ChatBubbleLeftRightIcon, ArrowRightIcon
 } from '@heroicons/react/24/outline';
 import { useState, useEffect } from 'react';
 
 const Landing = () => {
-  const [stats, setStats] = useState({
-    doctors: 0,
-    patients: 0,
-    reviews: 0,
-    rating: 0
-  });
+  const [stats, setStats] = useState({ doctors: 0, patients: 0, reviews: 0, rating: 0 });
 
   useEffect(() => {
     // Fetch real stats from backend
     const fetchStats = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/public/stats');
+        const response = await fetch('http://localhost:5400/api/public/stats');
         const data = await response.json();
-        
         // Use the stats directly from backend
         setStats(data);
       } catch (error) {
         console.error('Failed to fetch stats:', error);
-        // Use default stats on error
-        setStats({
-          doctors: 50,
-          patients: 1000,
-          reviews: 500,
-          rating: 4.8
-        });
+        setStats({ doctors: 50, patients: 1000, reviews: 500, rating: 4.8 });
       }
     };
-
     fetchStats();
   }, []);
 

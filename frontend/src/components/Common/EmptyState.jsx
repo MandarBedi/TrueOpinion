@@ -16,14 +16,11 @@ const EmptyState = ({
     <div className={`text-center py-5 ${className}`}>
       <div className="mb-4">
         <i className={`${icon} text-muted`} style={{ fontSize: '4rem' }}></i>
-      </div>
-      
+      </div>   
       <h4 className="text-muted mb-3">{title}</h4>
-      
       {description && (
         <p className="text-muted mb-4">{description}</p>
-      )}
-      
+      )}   
       {actionLabel && onAction && (
         <button
           className="btn btn-primary"

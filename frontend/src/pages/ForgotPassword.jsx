@@ -13,7 +13,6 @@ import { EnvelopeIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       email: '',

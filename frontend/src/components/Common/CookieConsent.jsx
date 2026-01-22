@@ -11,14 +11,12 @@ const CookieConsent = () => {
       const timer = setTimeout(() => {
         setShowBanner(true);
       }, 2000);
-      
       return () => clearTimeout(timer);
     }
   }, []);
 
   const handleConsent = async (accepted) => {
     setLoading(true);
-    
     try {
       // Store consent locally
       localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'declined');
@@ -34,7 +32,6 @@ const CookieConsent = () => {
   };
 
   if (!showBanner) return null;
-
   return (
     <div
       className="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 shadow-lg z-50"

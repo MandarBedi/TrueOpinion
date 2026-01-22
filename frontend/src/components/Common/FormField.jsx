@@ -6,25 +6,13 @@ import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
  * @param {Object} props - Component props
  */
 const FormField = ({
-  label,
-  name,
-  type = 'text',
-  placeholder,
-  value,
-  onChange,
-  onBlur,
-  error,
-  touched,
-  required = false,
-  disabled = false,
-  className = '',
-  children,
-  helpText,
-  ...props
+  label, name, type = 'text', placeholder, value, onChange,
+  onBlur, error, touched, required = false, disabled = false,
+  className = '',  children,  helpText,  ...props
 }) => {
+  
   const hasError = touched && error;
   const fieldId = `field-${name}`;
-
   const baseInputClasses = `
     block w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 
     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 
@@ -40,18 +28,11 @@ const FormField = ({
     if (children) {
       return children;
     }
-
     if (type === 'textarea') {
       return (
         <textarea
-          id={fieldId}
-          name={name}
-          className={`${baseInputClasses} ${className}`}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          disabled={disabled}
+          id={fieldId} name={name} className={`${baseInputClasses} ${className}`}
+          placeholder={placeholder} value={value} onChange={onChange} onBlur={onBlur} disabled={disabled}
           {...props}
         />
       );

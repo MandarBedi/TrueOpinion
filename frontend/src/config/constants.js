@@ -4,7 +4,7 @@ export const COPYRIGHT = '© 2025 True Opinion. All rights reserved.';
 
 // API Configuration
 export const API_CONFIG = {
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5173/api',
+  baseURL: FRONTEND_URL || 'http://localhost:5173/api',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -12,103 +12,48 @@ export const API_CONFIG = {
     'X-Requested-With': 'XMLHttpRequest',
   },
   retry: {
-    retries: 3,
-    maxFailures: 5,
-    initialDelayMs: 1000,
-    maxDelayMs: 5000,
-    resetTimeout: 30000,
+    retries: 3, maxFailures: 5, initialDelayMs: 1000, maxDelayMs: 5000, resetTimeout: 30000,
     shouldRetry: (error) => {
       const { status } = error.response || {};
       return !status || status >= 500 || status === 429;
     },
   },
-  timeouts: {
-    DEFAULT: 30000,
-    UPLOAD: 120000,
-    DOWNLOAD: 60000,
-  },
+  timeouts: { DEFAULT: 30000, UPLOAD: 120000, DOWNLOAD: 60000, },
 };
 
 // Medical Specialties (consolidated from utils/constants.js)
 export const MEDICAL_SPECIALTIES = [
-  'Cardiology',
-  'Neurology',
-  'Orthopedics',
-  'Dermatology',
-  'Pediatrics',
-  'Psychiatry',
-  'Radiology',
-  'Oncology',
-  'Gastroenterology',
-  'Endocrinology',
-  'Pulmonology',
-  'Nephrology',
-  'Hematology',
-  'Rheumatology',
-  'Infectious Disease',
-  'Emergency Medicine',
-  'Family Medicine',
-  'Internal Medicine',
-  'Ophthalmology',
-  'ENT',
-  'Urology',
-  'Gynecology'
+  'Cardiology', 'Neurology', 'Orthopedics', 'Dermatology', 'Pediatrics', 'Psychiatry', 
+  'Radiology', 'Oncology', 'Gastroenterology', 'Endocrinology', 'Pulmonology', 
+  'Nephrology', 'Hematology', 'Rheumatology', 'Infectious Disease', 
+  'Emergency Medicine', 'Family Medicine', 'Internal Medicine', 'Ophthalmology',
+  'ENT', 'Urology', 'Gynecology'
 ];
 
 // Availability days
 export const AVAILABILITY_DAYS = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
+  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
 ];
 
 // Time slots
 export const TIME_SLOTS = [
-  '09:00-10:00',
-  '10:00-11:00',
-  '11:00-12:00',
-  '12:00-13:00',
-  '14:00-15:00',
-  '15:00-16:00',
-  '16:00-17:00',
-  '17:00-18:00',
-  '18:00-19:00',
-  '19:00-20:00'
+  '09:00-10:00', '10:00-11:00', '11:00-12:00', '12:00-13:00', '14:00-15:00',
+  '15:00-16:00', '16:00-17:00', '17:00-18:00', '18:00-19:00', '19:00-20:00'
 ];
 
 // User status options
 export const USER_STATUS = {
-  ACTIVE: 'active',
-  SUSPENDED: 'suspended',
-  PENDING: 'pending',
-  APPROVED: 'approved',
-  REJECTED: 'rejected',
+  ACTIVE: 'active', SUSPENDED: 'suspended', PENDING: 'pending', APPROVED: 'approved', REJECTED: 'rejected',
 };
 
 // Application status options
-export const APPLICATION_STATUS = {
-  PENDING: 'pending',
-  REVIEWED: 'reviewed',
-  CANCELLED: 'cancelled',
-};
+export const APPLICATION_STATUS = { PENDING: 'pending', REVIEWED: 'reviewed', CANCELLED: 'cancelled', };
 
 // Payment status options
-export const PAYMENT_STATUS = {
-  SUCCESS: 'success',
-  FAILED: 'failed',
-  PENDING: 'pending',
-  REFUNDED: 'refunded',
-};
+export const PAYMENT_STATUS = { SUCCESS: 'success', FAILED: 'failed', PENDING: 'pending', REFUNDED: 'refunded', };
 
 // Pagination defaults
-export const PAGINATION_DEFAULTS = {
-  pageSize: 10,
-  pageSizeOptions: [5, 10, 20, 50],
-};
+export const PAGINATION_DEFAULTS = { pageSize: 10, pageSizeOptions: [5, 10, 20, 50], };
 
 // File upload limits
 export const FILE_UPLOAD_LIMITS = {
@@ -118,28 +63,14 @@ export const FILE_UPLOAD_LIMITS = {
 };
 
 // Status options
-export const STATUS_OPTIONS = {
-  ACTIVE: 'active',
-  INACTIVE: 'inactive',
-  PENDING: 'pending',
-  APPROVED: 'approved',
-  REJECTED: 'rejected',
-  SUSPENDED: 'suspended',
-};
+export const STATUS_OPTIONS = { ACTIVE: 'active', INACTIVE: 'inactive', PENDING: 'pending', APPROVED: 'approved', REJECTED: 'rejected', SUSPENDED: 'suspended', };
 
 // User roles
-export const USER_ROLES = {
-  ADMIN: 'admin',
-  PATIENT: 'patient',
-  DOCTOR: 'doctor',
-};
+export const USER_ROLES = { ADMIN: 'admin', PATIENT: 'patient', DOCTOR: 'doctor', };
 
 // Notification types
 export const NOTIFICATION_TYPES = {
-  INFO: 'info',
-  SUCCESS: 'success',
-  WARNING: 'warning',
-  ERROR: 'error',
+  INFO: 'info', SUCCESS: 'success', WARNING: 'warning', ERROR: 'error',
   APPLICATION_SUBMITTED: 'application_submitted',
   APPLICATION_REVIEWED: 'application_reviewed',
   PAYMENT_SUCCESS: 'payment_success',
@@ -185,17 +116,9 @@ export const SUCCESS_MESSAGES = {
 
 // Validation Rules
 export const VALIDATION_RULES = {
-  PASSWORD_MIN_LENGTH: 8,
-  NAME_MIN_LENGTH: 2,
-  NAME_MAX_LENGTH: 50,
-  DESCRIPTION_MIN_LENGTH: 50,
-  DESCRIPTION_MAX_LENGTH: 1000,
-  PHONE_MIN_LENGTH: 10,
-  LICENSE_MIN_LENGTH: 5,
-  EXPERIENCE_MIN: 0,
-  EXPERIENCE_MAX: 50,
-  FEE_MIN: 25,
-  FEE_MAX: 500
+  PASSWORD_MIN_LENGTH: 8, NAME_MIN_LENGTH: 2, NAME_MAX_LENGTH: 50, DESCRIPTION_MIN_LENGTH: 50,
+  DESCRIPTION_MAX_LENGTH: 1000, PHONE_MIN_LENGTH: 10, LICENSE_MIN_LENGTH: 5, EXPERIENCE_MIN: 0,
+  EXPERIENCE_MAX: 50, FEE_MIN: 25, FEE_MAX: 500
 };
 
 // Regex Patterns
